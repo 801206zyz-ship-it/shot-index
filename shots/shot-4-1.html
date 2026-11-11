@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>结论：谁的报表更能扛</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#07070a;overflow:hidden}
+#wrap{position:fixed;inset:0;overflow:hidden}
+#stage{width:1920px;height:1080px;position:absolute;left:50%;top:50%;overflow:hidden;
+  transform:translate(-50%,-50%) scale(1);transform-origin:center center;
+  background:#080c18;color:#e8eefc;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.fx{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .82s cubic-bezier(.2,.75,.2,1)}
+.fx.on{opacity:1;transform:none}
+.fx.d1{transition-delay:.06s}.fx.d2{transition-delay:.12s}.fx.d3{transition-delay:.18s}
+#hud{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.10);z-index:6}
+#bar{height:100%;width:0;background:#f5c451}
+#hint{position:absolute;right:26px;bottom:22px;font:500 15px/1 Consolas,"Courier New",monospace;letter-spacing:.18em;
+  color:#6b7a99;opacity:0;transition:opacity .6s ease;z-index:6}
+#hint.on{opacity:.85}
+#start{position:absolute;inset:0;background:#050507;display:grid;place-items:center;
+  z-index:9;cursor:pointer;transition:opacity .8s ease}
+#start.gone{opacity:0;pointer-events:none}
+#start .t{color:#e9e6df;font:600 40px/1.5 "PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;letter-spacing:.42em;text-indent:.42em}
+#start .s{margin-top:22px;color:#6f6a63;font:400 18px/1.6 Consolas,"Courier New",monospace;letter-spacing:.2em;text-align:center}
+
+.fin{position:absolute;inset:0;background:
+  radial-gradient(80% 70% at 50% -10%,#132146 0%,#0b1226 45%,#080c18 80%)}
+.kick{position:absolute;left:96px;top:80px;font:700 19px/1 Consolas,monospace;letter-spacing:.42em;color:#f5c451}
+.h1{position:absolute;left:94px;top:118px;font:700 74px/1.16 "__FONT__"}
+.h1 em{font-style:normal;color:#f5c451}
+.cards{position:absolute;left:96px;right:96px;top:320px;display:flex;gap:36px}
+.card{flex:1;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.10);
+  border-radius:10px;padding:44px 46px 38px;position:relative}
+.card.top{border-color:rgba(245,196,81,.45);background:rgba(245,196,81,.055)}
+.card h3{font:700 30px/1.2 "__FONT__";margin-bottom:8px}
+.card .sc{font:400 14px/1 Consolas,monospace;letter-spacing:.2em;color:#8b9ab5;margin-bottom:26px}
+.card ul{list-style:none}
+.card li{font:400 20px/1.75 "__FONT__";color:#c6d2e8;padding-left:20px;position:relative;margin-bottom:12px}
+.card li:before{content:"";position:absolute;left:0;top:13px;width:7px;height:7px;border-radius:50%;background:#f5c451}
+.card li b{color:#fff;font-family:Consolas,monospace}
+.card .rd{margin-top:22px;font:400 17px/1.7 "__FONT__";color:#93a3bf}
+.verdict{position:absolute;left:96px;right:96px;bottom:120px;border-top:1px solid rgba(245,196,81,.28);
+  padding-top:30px;display:flex;justify-content:space-between;align-items:flex-end;gap:50px}
+.verdict .t{font:700 34px/1.4 "__FONT__";max-width:1180px}
+.verdict .t b{color:#f5c451;font-family:Consolas,monospace}
+.verdict .src{font:400 14px/1.9 Consolas,monospace;color:#6b7a99;text-align:right;white-space:nowrap}
+
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+
+<div class="fin">
+  <div class="kick fx" id="g1">CONCLUSION</div>
+  <div class="h1 fx d1" id="g2">一家在<em>收</em>，一家在<em>扛</em></div>
+  <div class="cards">
+    <div class="card top fx d2" id="g3">
+      <h3>贵州茅台</h3>
+      <div class="sc">10 项比率领先 9 项</div>
+      <ul>
+        <li>毛利率 <b>91.18%</b>、净利率 <b>48.76%</b>、资本回报 <b>46.29%</b></li>
+        <li>资产负债率仅 <b>19.64%</b>，流动比率 <b>5.09×</b></li>
+        <li>唯一的「慢」是 1,419 天存货周转，属基酒陈酿工艺</li>
+      </ul>
+      <div class="rd">2025 首次营收净利双降，靠控量保价换来价格体系不塌。</div>
+    </div>
+    <div class="card fx d2" id="g4">
+      <h3>五粮液</h3>
+      <div class="sc">仅存货周转速度一项占优</div>
+      <ul>
+        <li>毛利率 <b>77.54%</b> 仍在，但营业利润率掉到 <b>30.23%</b></li>
+        <li>资本回报 <b>9.46%</b>，已接近资金成本</li>
+        <li>资产负债率 <b>55.49%</b>，其中 163.25 亿元是待确认预收款</li>
+      </ul>
+      <div class="rd">303 亿元收入一次性回退，修复路径只有一条：把收入拉回来。</div>
+    </div>
+  </div>
+  <div class="verdict fx" id="g5">
+    <div class="t">同样是高端白酒，<b>一个在收杠杆、一个在扛库存</b>。2026 年真正要盯的是两家的合同负债与批发价。</div>
+    <div class="src">数据：2024 / 2025 年报（合并口径）<br>金额单位：万元</div>
+  </div>
+</div>
+
+<div id="hud"><div id="bar"></div></div>
+<div id="hint">SPACE 暂停 · 点右下角重播</div>
+<div id="start"><div><div class="t">点 击 开 始 播 放</div>
+<div class="s">4-1 · 双卡对照收束 · 23,616</div></div></div>
+</div></div>
+<script>
+var DUR = 20000, CUES = [{"t": 200, "sel": "#g1", "act": "on"}, {"t": 500, "sel": "#g2", "act": "on"}, {"t": 1100, "sel": "#g3", "act": "on"}, {"t": 1400, "sel": "#g4", "act": "on"}, {"t": 3400, "sel": "#g5", "act": "on"}];
+var stage = document.getElementById('stage'), bar = document.getElementById('bar');
+var startEl = document.getElementById('start'), hintEl = document.getElementById('hint');
+var playing = false, t0 = 0, elapsed = 0, paused = false, done = {}, timer = null;
+function fit(){
+  var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+}
+window.addEventListener('resize', fit); fit();
+function run(c){
+  var el = document.querySelector(c.sel);
+  if(!el) return;
+  if(c.act === 'on'){ el.classList.add('on');
+    var hv = el.style.getPropertyValue('--h'); if(hv){ el.style.height = hv; } }
+  else if(c.act === 'w'){ el.style.width = c.arg + '%'; el.style.transition = 'width 1.05s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'h'){ el.style.height = c.arg + '%'; el.style.transition = 'height 1.15s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'cls'){ el.classList.add(c.arg); }
+  else if(c.act === 'count'){
+    var to = c.arg, dec = c.dec || 0, dur = 900, s0 = Date.now();
+    var id = setInterval(function(){
+      var k = Math.min(1, (Date.now() - s0) / dur);
+      var v = to * (1 - Math.pow(1 - k, 3));
+      el.textContent = v.toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+      if(k >= 1) clearInterval(id);
+    }, 33);
+  }
+}
+function tick(){
+  if(!playing){ if(timer){ clearInterval(timer); timer = null; } return; }
+  var now = Date.now();
+  if(!paused){
+    if(!t0) t0 = now;
+    elapsed += now - t0; t0 = now;
+    for(var i = 0; i < CUES.length; i++){
+      var c = CUES[i];
+      if(!done[i] && elapsed >= c.t){ done[i] = 1; run(c); }
+    }
+    bar.style.width = Math.min(100, elapsed / DUR * 100) + '%';
+    if(elapsed >= DUR){
+      playing = false; hintEl.classList.add('on'); hintEl.textContent = '重 播';
+      hintEl.style.pointerEvents = 'auto'; hintEl.style.cursor = 'pointer';
+      if(timer){ clearInterval(timer); timer = null; }
+      return;
+    }
+  } else { t0 = now; }
+}
+function play(){
+  startEl.classList.add('gone');
+  playing = true; elapsed = 0; t0 = 0; done = {}; paused = false;
+  bar.style.width = '0%'; hintEl.classList.remove('on');
+  document.querySelectorAll('.fx').forEach(function(e){ e.classList.remove('on'); });
+  if(timer) clearInterval(timer);
+  timer = setInterval(tick, 16);
+}
+startEl.addEventListener('click', play);
+if(false){ setTimeout(play, 60); }
+hintEl.addEventListener('click', function(){ if(hintEl.textContent.indexOf('重') >= 0) play(); });
+window.addEventListener('keydown', function(e){
+  if(e.code === 'Space'){ e.preventDefault();
+    if(!playing){ play(); return; }
+    paused = !paused;
+    document.querySelectorAll('.fx').forEach(function(el){
+      el.style.transitionDuration = paused ? '0s' : '';
+    });
+  }
+});
+</script>
+</body>
+</html>

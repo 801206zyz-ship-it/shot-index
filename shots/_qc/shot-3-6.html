@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>茅台 2025：从 2200 元到 1399 元</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#07070a;overflow:hidden}
+#wrap{position:fixed;inset:0;overflow:hidden}
+#stage{width:1920px;height:1080px;position:absolute;left:50%;top:50%;overflow:hidden;
+  transform:translate(-50%,-50%) scale(1);transform-origin:center center;
+  background:#0a0a0c;color:#f0ece4;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.fx{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .82s cubic-bezier(.2,.75,.2,1)}
+.fx.on{opacity:1;transform:none}
+.fx.d1{transition-delay:.06s}.fx.d2{transition-delay:.12s}.fx.d3{transition-delay:.18s}
+#hud{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.10);z-index:6}
+#bar{height:100%;width:0;background:#ff3b30}
+#hint{position:absolute;right:26px;bottom:22px;font:500 15px/1 Consolas,"Courier New",monospace;letter-spacing:.18em;
+  color:#6d6a64;opacity:0;transition:opacity .6s ease;z-index:6}
+#hint.on{opacity:.85}
+#start{position:absolute;inset:0;background:#050507;display:grid;place-items:center;
+  z-index:9;cursor:pointer;transition:opacity .8s ease}
+#start.gone{opacity:0;pointer-events:none}
+#start .t{color:#e9e6df;font:600 40px/1.5 "PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;letter-spacing:.42em;text-indent:.42em}
+#start .s{margin-top:22px;color:#6f6a63;font:400 18px/1.6 Consolas,"Courier New",monospace;letter-spacing:.2em;text-align:center}
+
+.slide{position:absolute;inset:0;background:
+  radial-gradient(90% 70% at 78% 6%,#2a0a0a 0%,#120607 42%,#0a0a0c 80%)}
+.kick{position:absolute;left:96px;top:80px;font:700 19px/1 Consolas,monospace;letter-spacing:.4em;color:#ff3b30}
+.h1{position:absolute;left:94px;top:116px;font:700 72px/1.18 "__FONT__"}
+.h1 em{font-style:normal;color:#ff3b30}
+.chartbox{position:absolute;left:96px;right:96px;top:330px;height:470px}
+.chartbox svg{width:100%;height:100%;overflow:visible}
+.grid{stroke:rgba(240,236,228,.10);stroke-width:1}
+.axis{stroke:rgba(240,236,228,.28);stroke-width:2}
+.pl{fill:none;stroke:#ff3b30;stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
+.dot{fill:#0a0a0c;stroke:#ff3b30;stroke-width:4}
+.tag{position:absolute;font:700 20px/1 Consolas,monospace;color:#ff6b62;white-space:nowrap}
+.tag.w{color:#f0ece4}
+.xlab{position:absolute;top:486px;font:400 15px/1 Consolas,monospace;color:#8b8781;letter-spacing:.06em}
+.kpi{position:absolute;top:150px;right:96px;text-align:right}
+.kpi div{font:400 15px/1 Consolas,monospace;color:#8b8781;letter-spacing:.16em;margin-bottom:12px}
+.kpi b{display:block;font:700 62px/1 Consolas,monospace;color:#ff3b30;letter-spacing:-.02em}
+.kpi b.s{font-size:34px;color:#f0ece4;margin-top:8px}
+.note{position:absolute;left:96px;bottom:70px;font:400 21px/1.8 "__FONT__";color:#b9b3a8;max-width:1180px}
+.note b{color:#ff6b62}
+
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+
+<div class="slide">
+  <div class="kick fx" id="e1">PRICE PATH · 2025</div>
+  <div class="h1 fx d1" id="e2">飞天批价，<em>一年跌掉三分之一</em></div>
+  <div class="kpi fx d2" id="e3"><div>2025 年初 → 双 11</div>
+    <b>2,200 → 1,399</b><b class="s">−36.4%</b></div>
+  <div class="chartbox fx d2" id="e4">
+    <svg viewBox="0 0 1600 470" preserveAspectRatio="none">
+      <line class="grid" x1="0" y1="60" x2="1600" y2="60"></line>
+      <line class="grid" x1="0" y1="170" x2="1600" y2="170"></line>
+      <line class="grid" x1="0" y1="280" x2="1600" y2="280"></line>
+      <line class="grid" x1="0" y1="390" x2="1600" y2="390"></line>
+      <line class="axis" x1="0" y1="440" x2="1600" y2="440"></line>
+      <polyline class="pl" points="40,48 300,132 560,214 820,286 1080,352 1340,398 1520,404"></polyline>
+      <circle class="dot" cx="40" cy="48" r="9"></circle>
+      <circle class="dot" cx="560" cy="214" r="9"></circle>
+      <circle class="dot" cx="1080" cy="352" r="9"></circle>
+      <circle class="dot" cx="1520" cy="404" r="9"></circle>
+    </svg>
+    <div class="tag w" style="left:24px;top:0">2,200</div>
+    <div class="tag" style="left:500px;top:166px">1,700</div>
+    <div class="tag" style="left:1010px;top:300px">1,499 指导价</div>
+    <div class="tag" style="left:1380px;top:352px">1,399</div>
+    <div class="xlab" style="left:20px">01 月</div>
+    <div class="xlab" style="left:330px">06 月</div>
+    <div class="xlab" style="left:700px">08 月</div>
+    <div class="xlab" style="left:1030px">10 月</div>
+    <div class="xlab" style="left:1330px">11-11</div>
+    <div class="xlab" style="left:1500px">12 月</div>
+  </div>
+  <div class="note fx" id="e5">2025-05-18 禁酒令落地，6 月散瓶首破 2,000；8 月失守 1,800；10 月破 1,700；
+    11-11 电商补贴把散瓶打到 <b>1,399</b>，首次跌破 1,499 指导价；12 月全面停货，价格才回到 1,600。</div>
+</div>
+
+<div id="hud"><div id="bar"></div></div>
+<div id="hint">SPACE 暂停 · 点右下角重播</div>
+<div id="start"><div><div class="t">点 击 开 始 播 放</div>
+<div class="s">3-6 · 折线下坠曲线 · 20,088</div></div></div>
+</div></div>
+<script>
+var DUR = 20000, CUES = [{"t": 200, "sel": "#e1", "act": "on"}, {"t": 500, "sel": "#e2", "act": "on"}, {"t": 1000, "sel": "#e3", "act": "on"}, {"t": 1300, "sel": "#e4", "act": "on"}, {"t": 4000, "sel": "#e5", "act": "on"}];
+var stage = document.getElementById('stage'), bar = document.getElementById('bar');
+var startEl = document.getElementById('start'), hintEl = document.getElementById('hint');
+var playing = false, t0 = 0, elapsed = 0, paused = false, done = {}, timer = null;
+function fit(){
+  var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+}
+window.addEventListener('resize', fit); fit();
+function run(c){
+  var el = document.querySelector(c.sel);
+  if(!el) return;
+  if(c.act === 'on'){ el.classList.add('on');
+    var hv = el.style.getPropertyValue('--h'); if(hv){ el.style.height = hv; } }
+  else if(c.act === 'w'){ el.style.width = c.arg + '%'; el.style.transition = 'width 1.05s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'h'){ el.style.height = c.arg + '%'; el.style.transition = 'height 1.15s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'cls'){ el.classList.add(c.arg); }
+  else if(c.act === 'count'){
+    var to = c.arg, dec = c.dec || 0, dur = 900, s0 = Date.now();
+    var id = setInterval(function(){
+      var k = Math.min(1, (Date.now() - s0) / dur);
+      var v = to * (1 - Math.pow(1 - k, 3));
+      el.textContent = v.toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+      if(k >= 1) clearInterval(id);
+    }, 33);
+  }
+}
+function tick(){
+  if(!playing){ if(timer){ clearInterval(timer); timer = null; } return; }
+  var now = Date.now();
+  if(!paused){
+    if(!t0) t0 = now;
+    elapsed += now - t0; t0 = now;
+    for(var i = 0; i < CUES.length; i++){
+      var c = CUES[i];
+      if(!done[i] && elapsed >= c.t){ done[i] = 1; run(c); }
+    }
+    bar.style.width = Math.min(100, elapsed / DUR * 100) + '%';
+    if(elapsed >= DUR){
+      playing = false; hintEl.classList.add('on'); hintEl.textContent = '重 播';
+      hintEl.style.pointerEvents = 'auto'; hintEl.style.cursor = 'pointer';
+      if(timer){ clearInterval(timer); timer = null; }
+      return;
+    }
+  } else { t0 = now; }
+}
+function play(){
+  startEl.classList.add('gone');
+  playing = true; elapsed = 0; t0 = 0; done = {}; paused = false;
+  bar.style.width = '0%'; hintEl.classList.remove('on');
+  document.querySelectorAll('.fx').forEach(function(e){ e.classList.remove('on'); });
+  if(timer) clearInterval(timer);
+  timer = setInterval(tick, 16);
+}
+startEl.addEventListener('click', play);
+if(true){ setTimeout(play, 60); }
+hintEl.addEventListener('click', function(){ if(hintEl.textContent.indexOf('重') >= 0) play(); });
+window.addEventListener('keydown', function(e){
+  if(e.code === 'Space'){ e.preventDefault();
+    if(!playing){ play(); return; }
+    paused = !paused;
+    document.querySelectorAll('.fx').forEach(function(el){
+      el.style.transitionDuration = paused ? '0s' : '';
+    });
+  }
+});
+</script>
+</body>
+</html>

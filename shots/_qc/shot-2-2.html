@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>利润表：营收腰斩 54.5% 的那一年</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#07070a;overflow:hidden}
+#wrap{position:fixed;inset:0;overflow:hidden}
+#stage{width:1920px;height:1080px;position:absolute;left:50%;top:50%;overflow:hidden;
+  transform:translate(-50%,-50%) scale(1);transform-origin:center center;
+  background:#efe7d6;color:#241f1a;
+  font-family:"Songti SC","SimSun",serif}
+.fx{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .82s cubic-bezier(.2,.75,.2,1)}
+.fx.on{opacity:1;transform:none}
+.fx.d1{transition-delay:.06s}.fx.d2{transition-delay:.12s}.fx.d3{transition-delay:.18s}
+#hud{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.10);z-index:6}
+#bar{height:100%;width:0;background:#8f1d13}
+#hint{position:absolute;right:26px;bottom:22px;font:500 15px/1 Consolas,"Courier New",monospace;letter-spacing:.18em;
+  color:#6a6258;opacity:0;transition:opacity .6s ease;z-index:6}
+#hint.on{opacity:.85}
+#start{position:absolute;inset:0;background:#050507;display:grid;place-items:center;
+  z-index:9;cursor:pointer;transition:opacity .8s ease}
+#start.gone{opacity:0;pointer-events:none}
+#start .t{color:#e9e6df;font:600 40px/1.5 "PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;letter-spacing:.42em;text-indent:.42em}
+#start .s{margin-top:22px;color:#6f6a63;font:400 18px/1.6 Consolas,"Courier New",monospace;letter-spacing:.2em;text-align:center}
+
+.paper{position:absolute;inset:0;background:
+  radial-gradient(120% 100% at 30% 0%, #f7f0e1 0%, #efe7d6 60%, #ddd2bd 100%)}
+.paper:after{content:"";position:absolute;inset:0;opacity:.4;
+  background-image:repeating-linear-gradient(90deg,rgba(120,105,80,.06) 0 1px,transparent 1px 5px)}
+.mast{position:absolute;left:80px;right:80px;top:52px;border-bottom:4px double #241f1a;padding-bottom:14px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  font:600 18px/1 Consolas,monospace;letter-spacing:.3em;color:#5b5348}
+.mast b{font:700 26px/1 "Songti SC",serif;letter-spacing:.5em}
+.headline{position:absolute;left:80px;right:80px;top:140px;font:900 128px/1.02 "Songti SC",serif;
+  letter-spacing:-.01em;color:#241f1a}
+.headline em{font-style:normal;color:#8f1d13}
+.deck{position:absolute;left:84px;right:84px;top:300px;font:500 30px/1.7 "Songti SC",serif;color:#4a433a}
+.cols{position:absolute;left:84px;right:84px;top:404px;column-count:3;column-gap:52px;
+  font:400 20px/1.95 "Songti SC",serif;color:#3b352d;text-align:justify}
+.cols p{margin-bottom:14px}
+.drop{float:left;font:700 76px/0.9 "Songti SC",serif;color:#8f1d13;padding:6px 12px 0 0}
+.inset{position:absolute;left:84px;right:84px;top:592px;border:2px solid #8f1d13;padding:20px 28px;
+  font:500 26px/1.6 "Songti SC",serif;color:#3b352d;background:rgba(143,29,19,.05)}
+.inset em{font-style:normal;color:#8f1d13;font-weight:700}
+.kpirow{position:absolute;left:84px;right:84px;bottom:118px;display:flex;gap:26px}
+.kpi{flex:1;border-top:3px solid #8f1d13;padding-top:16px}
+.kpi b{display:block;font:900 58px/1 Impact,"Arial Black",sans-serif;color:#8f1d13;letter-spacing:-.01em}
+.kpi span{display:block;margin-top:10px;font:500 18px/1.5 "Songti SC",serif;color:#5b5348}
+.foot{position:absolute;left:84px;bottom:64px;font:500 15px/1 Consolas,monospace;color:#6a6258;letter-spacing:.12em}
+
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+
+<div class="paper">
+  <div class="mast fx" id="d1"><b>财经年报</b><span>2026 · 05 · 第 2 版</span></div>
+  <div class="headline fx d1" id="d2">营收腰斩 <em>54.5%</em></div>
+  <div class="deck fx d2" id="d3">五粮液 2025 年营业收入 405.29 亿元，为近十年最低；归母净利润 89.54 亿元，同比 −71.89%。</div>
+  <div class="cols fx d3" id="d4">
+    <p><span class="drop">2</span>026 年 4 月 30 日深夜，五粮液发布《关于前期会计差错更正的公告》，将收入确认由「发货给经销商」改为「货到终端」。</p>
+    <p>前三季度营业收入由 609.45 亿元追溯调减至 306.38 亿元，一次性抹掉 303.08 亿元；全年营收因此定格在 405.29 亿元。</p>
+    <p>同期茅台营业收入 1,688.38 亿元，同比仅 −1.21%，为 2001 年上市以来首次下滑。</p>
+  </div>
+  <div class="inset fx d3" id="d7">公告原话：「公司对收入确认时点进行了重新判断，<em>由发货确认改为终端销售确认</em>。」—— 一句话，303 亿元收入移到下一年。</div>
+  <div class="kpirow fx d3" id="d5">
+    <div class="kpi"><b id="e1">0</b><span>五粮液营收（亿元）</span></div>
+    <div class="kpi"><b id="e2">0</b><span>营收同比（%）</span></div>
+    <div class="kpi"><b id="e3">0</b><span>归母净利同比（%）</span></div>
+    <div class="kpi"><b id="e4">0</b><span>被追溯调减（亿元）</span></div>
+  </div>
+  <div class="foot fx d3" id="d6">数据：五粮液《关于前期会计差错更正的公告》（2026-04-30）、2025 年年度报告</div>
+</div>
+
+<div id="hud"><div id="bar"></div></div>
+<div id="hint">SPACE 暂停 · 点右下角重播</div>
+<div id="start"><div><div class="t">点 击 开 始 播 放</div>
+<div class="s">复古报纸 · 第 2 版 · 财经头条</div></div></div>
+</div></div>
+<script>
+var DUR = 20000, CUES = [{"t": 200, "sel": "#d1", "act": "on"}, {"t": 500, "sel": "#d2", "act": "on"}, {"t": 1300, "sel": "#d3", "act": "on"}, {"t": 2200, "sel": "#d4", "act": "on"}, {"t": 3300, "sel": "#d7", "act": "on"}, {"t": 3700, "sel": "#d5", "act": "on"}, {"t": 3800, "sel": "#e1", "act": "count", "arg": 405.29, "dec": 2}, {"t": 4300, "sel": "#e2", "act": "count", "arg": -54.55, "dec": 2}, {"t": 4800, "sel": "#e3", "act": "count", "arg": -71.89, "dec": 2}, {"t": 5300, "sel": "#e4", "act": "count", "arg": 303.08, "dec": 2}, {"t": 6400, "sel": "#d6", "act": "on"}];
+var stage = document.getElementById('stage'), bar = document.getElementById('bar');
+var startEl = document.getElementById('start'), hintEl = document.getElementById('hint');
+var playing = false, t0 = 0, elapsed = 0, paused = false, done = {}, timer = null;
+function fit(){
+  var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+}
+window.addEventListener('resize', fit); fit();
+function run(c){
+  var el = document.querySelector(c.sel);
+  if(!el) return;
+  if(c.act === 'on'){ el.classList.add('on');
+    var hv = el.style.getPropertyValue('--h'); if(hv){ el.style.height = hv; } }
+  else if(c.act === 'w'){ el.style.width = c.arg + '%'; el.style.transition = 'width 1.05s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'h'){ el.style.height = c.arg + '%'; el.style.transition = 'height 1.15s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'cls'){ el.classList.add(c.arg); }
+  else if(c.act === 'count'){
+    var to = c.arg, dec = c.dec || 0, dur = 900, s0 = Date.now();
+    var id = setInterval(function(){
+      var k = Math.min(1, (Date.now() - s0) / dur);
+      var v = to * (1 - Math.pow(1 - k, 3));
+      el.textContent = v.toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+      if(k >= 1) clearInterval(id);
+    }, 33);
+  }
+}
+function tick(){
+  if(!playing){ if(timer){ clearInterval(timer); timer = null; } return; }
+  var now = Date.now();
+  if(!paused){
+    if(!t0) t0 = now;
+    elapsed += now - t0; t0 = now;
+    for(var i = 0; i < CUES.length; i++){
+      var c = CUES[i];
+      if(!done[i] && elapsed >= c.t){ done[i] = 1; run(c); }
+    }
+    bar.style.width = Math.min(100, elapsed / DUR * 100) + '%';
+    if(elapsed >= DUR){
+      playing = false; hintEl.classList.add('on'); hintEl.textContent = '重 播';
+      hintEl.style.pointerEvents = 'auto'; hintEl.style.cursor = 'pointer';
+      if(timer){ clearInterval(timer); timer = null; }
+      return;
+    }
+  } else { t0 = now; }
+}
+function play(){
+  startEl.classList.add('gone');
+  playing = true; elapsed = 0; t0 = 0; done = {}; paused = false;
+  bar.style.width = '0%'; hintEl.classList.remove('on');
+  document.querySelectorAll('.fx').forEach(function(e){ e.classList.remove('on'); });
+  if(timer) clearInterval(timer);
+  timer = setInterval(tick, 16);
+}
+startEl.addEventListener('click', play);
+if(true){ setTimeout(play, 60); }
+hintEl.addEventListener('click', function(){ if(hintEl.textContent.indexOf('重') >= 0) play(); });
+window.addEventListener('keydown', function(e){
+  if(e.code === 'Space'){ e.preventDefault();
+    if(!playing){ play(); return; }
+    paused = !paused;
+    document.querySelectorAll('.fx').forEach(function(el){
+      el.style.transitionDuration = paused ? '0s' : '';
+    });
+  }
+});
+</script>
+</body>
+</html>

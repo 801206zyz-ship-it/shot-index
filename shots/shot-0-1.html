@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>茅台 vs 五粮液 2024—2025 财报分析</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#07070a;overflow:hidden}
+#wrap{position:fixed;inset:0;overflow:hidden}
+#stage{width:1920px;height:1080px;position:absolute;left:50%;top:50%;overflow:hidden;
+  transform:translate(-50%,-50%) scale(1);transform-origin:center center;
+  background:#0b0b0d;color:#f2efe6;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.fx{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .82s cubic-bezier(.2,.75,.2,1)}
+.fx.on{opacity:1;transform:none}
+.fx.d1{transition-delay:.06s}.fx.d2{transition-delay:.12s}.fx.d3{transition-delay:.18s}
+#hud{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.10);z-index:6}
+#bar{height:100%;width:0;background:#c8342c}
+#hint{position:absolute;right:26px;bottom:22px;font:500 15px/1 Consolas,"Courier New",monospace;letter-spacing:.18em;
+  color:#8b8378;opacity:0;transition:opacity .6s ease;z-index:6}
+#hint.on{opacity:.85}
+#start{position:absolute;inset:0;background:#050507;display:grid;place-items:center;
+  z-index:9;cursor:pointer;transition:opacity .8s ease}
+#start.gone{opacity:0;pointer-events:none}
+#start .t{color:#e9e6df;font:600 40px/1.5 "PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;letter-spacing:.42em;text-indent:.42em}
+#start .s{margin-top:22px;color:#6f6a63;font:400 18px/1.6 Consolas,"Courier New",monospace;letter-spacing:.2em;text-align:center}
+
+.poster{position:absolute;inset:0;background:
+  radial-gradient(120% 80% at 50% 0%, #1b1a1c 0%, #0b0b0d 62%, #07070a 100%)}
+.grain{position:absolute;inset:0;opacity:.28;background-image:
+  repeating-linear-gradient(0deg,rgba(255,255,255,.045) 0 1px,transparent 1px 3px)}
+.frame{position:absolute;inset:56px;border:3px solid rgba(232,226,210,.5)}
+.frame:after{content:"";position:absolute;inset:12px;border:1px solid rgba(232,226,210,.22)}
+.kick{position:absolute;left:104px;top:104px;font:600 22px/1 Consolas,monospace;
+  letter-spacing:.5em;color:#c8342c}
+.title{position:absolute;left:96px;top:196px;font:900 132px/1.02 "PingFang SC","Microsoft YaHei",sans-serif;
+  letter-spacing:-.02em;text-shadow:0 10px 40px rgba(0,0,0,.65)}
+.title em{font-style:normal;color:#c8342c}
+.title .sm{display:block;font-size:44px;letter-spacing:.42em;margin-top:26px;
+  color:#b9b2a4;font-weight:600}
+.sub{position:absolute;left:100px;top:520px;font:500 26px/1.9 "Songti SC",serif;color:#9a9284;
+  letter-spacing:.06em}
+.vs{position:absolute;right:150px;top:300px;width:300px;height:300px;
+  border-radius:50%;border:6px solid #c8342c;display:grid;place-items:center;
+  transform:rotate(-8deg);background:rgba(200,52,44,.10)}
+.vs span{font:900 116px/1 Impact,"Arial Black",sans-serif;color:#c8342c}
+.vs:after{content:"";position:absolute;inset:-26px;border:2px dashed rgba(200,52,44,.42);border-radius:50%}
+.nums{position:absolute;left:100px;bottom:150px;display:flex;gap:88px}
+.nums div{border-left:3px solid #c8342c;padding-left:22px}
+.nums b{display:block;font:900 66px/1 Impact,"Arial Black",sans-serif}
+.nums i{display:block;font:500 19px/1 Consolas,monospace;color:#8b8378;
+  letter-spacing:.22em;font-style:normal;margin-top:14px}
+.foot{position:absolute;right:104px;bottom:66px;font:400 15px/1 Consolas,monospace;color:#6d665c;
+  letter-spacing:.14em}
+
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+
+<div class="poster">
+  <div class="grain"></div><div class="frame"></div>
+  <div class="kick fx" id="a1">FINANCIAL RATIO ANALYSIS · 2024—2025</div>
+  <h1 class="title fx d1" id="a2">茅台 <em>vs</em> 五粮液<span class="sm">财 报 对 比</span></h1>
+  <div class="sub fx d2" id="a3">十项比率 · 两年对照 · 两次口径变更之后<br>贵州茅台 600519.SH　｜　五粮液 000858.SZ</div>
+  <div class="vs fx" id="a4"><span>VS</span></div>
+  <div class="nums">
+    <div class="fx" id="a5"><b id="n1">0</b><i>CAMERA SHOTS</i></div>
+    <div class="fx d1" id="a6"><b id="n2">0</b><i>CHAPTERS</i></div>
+    <div class="fx d2" id="a7"><b id="n3">0</b><i>RATIOS</i></div>
+  </div>
+  <div class="foot fx d3" id="a8">数据：两家公司 2024 / 2025 年度报告（合并报表口径）</div>
+</div>
+
+<div id="hud"><div id="bar"></div></div>
+<div id="hint">SPACE 暂停 · 点右下角重播</div>
+<div id="start"><div><div class="t">点 击 开 始 播 放</div>
+<div class="s">13 个镜头 · 总时长 4:06</div></div></div>
+</div></div>
+<script>
+var DUR = 22000, CUES = [{"t": 300, "sel": "#a1", "act": "on"}, {"t": 600, "sel": "#a2", "act": "on"}, {"t": 1400, "sel": "#a3", "act": "on"}, {"t": 2200, "sel": "#a4", "act": "on"}, {"t": 2800, "sel": "#a5", "act": "on"}, {"t": 2900, "sel": "#n1", "act": "count", "arg": 13}, {"t": 3050, "sel": "#a6", "act": "on"}, {"t": 3150, "sel": "#n2", "act": "count", "arg": 5}, {"t": 3300, "sel": "#a7", "act": "on"}, {"t": 3400, "sel": "#n3", "act": "count", "arg": 10}, {"t": 3900, "sel": "#a8", "act": "on"}];
+var stage = document.getElementById('stage'), bar = document.getElementById('bar');
+var startEl = document.getElementById('start'), hintEl = document.getElementById('hint');
+var playing = false, t0 = 0, elapsed = 0, paused = false, done = {}, timer = null;
+function fit(){
+  var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+}
+window.addEventListener('resize', fit); fit();
+function run(c){
+  var el = document.querySelector(c.sel);
+  if(!el) return;
+  if(c.act === 'on'){ el.classList.add('on');
+    var hv = el.style.getPropertyValue('--h'); if(hv){ el.style.height = hv; } }
+  else if(c.act === 'w'){ el.style.width = c.arg + '%'; el.style.transition = 'width 1.05s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'h'){ el.style.height = c.arg + '%'; el.style.transition = 'height 1.15s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'cls'){ el.classList.add(c.arg); }
+  else if(c.act === 'count'){
+    var to = c.arg, dec = c.dec || 0, dur = 900, s0 = Date.now();
+    var id = setInterval(function(){
+      var k = Math.min(1, (Date.now() - s0) / dur);
+      var v = to * (1 - Math.pow(1 - k, 3));
+      el.textContent = v.toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+      if(k >= 1) clearInterval(id);
+    }, 33);
+  }
+}
+function tick(){
+  if(!playing){ if(timer){ clearInterval(timer); timer = null; } return; }
+  var now = Date.now();
+  if(!paused){
+    if(!t0) t0 = now;
+    elapsed += now - t0; t0 = now;
+    for(var i = 0; i < CUES.length; i++){
+      var c = CUES[i];
+      if(!done[i] && elapsed >= c.t){ done[i] = 1; run(c); }
+    }
+    bar.style.width = Math.min(100, elapsed / DUR * 100) + '%';
+    if(elapsed >= DUR){
+      playing = false; hintEl.classList.add('on'); hintEl.textContent = '重 播';
+      hintEl.style.pointerEvents = 'auto'; hintEl.style.cursor = 'pointer';
+      if(timer){ clearInterval(timer); timer = null; }
+      return;
+    }
+  } else { t0 = now; }
+}
+function play(){
+  startEl.classList.add('gone');
+  playing = true; elapsed = 0; t0 = 0; done = {}; paused = false;
+  bar.style.width = '0%'; hintEl.classList.remove('on');
+  document.querySelectorAll('.fx').forEach(function(e){ e.classList.remove('on'); });
+  if(timer) clearInterval(timer);
+  timer = setInterval(tick, 16);
+}
+startEl.addEventListener('click', play);
+if(false){ setTimeout(play, 60); }
+hintEl.addEventListener('click', function(){ if(hintEl.textContent.indexOf('重') >= 0) play(); });
+window.addEventListener('keydown', function(e){
+  if(e.code === 'Space'){ e.preventDefault();
+    if(!playing){ play(); return; }
+    paused = !paused;
+    document.querySelectorAll('.fx').forEach(function(el){
+      el.style.transitionDuration = paused ? '0s' : '';
+    });
+  }
+});
+</script>
+</body>
+</html>

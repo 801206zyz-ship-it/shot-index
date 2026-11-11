@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>两张报表合起来怎么读</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#07070a;overflow:hidden}
+#wrap{position:fixed;inset:0;overflow:hidden}
+#stage{width:1920px;height:1080px;position:absolute;left:50%;top:50%;overflow:hidden;
+  transform:translate(-50%,-50%) scale(1);transform-origin:center center;
+  background:#f3ead9;color:#1b2340;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.fx{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .82s cubic-bezier(.2,.75,.2,1)}
+.fx.on{opacity:1;transform:none}
+.fx.d1{transition-delay:.06s}.fx.d2{transition-delay:.12s}.fx.d3{transition-delay:.18s}
+#hud{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.10);z-index:6}
+#bar{height:100%;width:0;background:#ff3d7f}
+#hint{position:absolute;right:26px;bottom:22px;font:500 15px/1 Consolas,"Courier New",monospace;letter-spacing:.18em;
+  color:#6b6a74;opacity:0;transition:opacity .6s ease;z-index:6}
+#hint.on{opacity:.85}
+#start{position:absolute;inset:0;background:#050507;display:grid;place-items:center;
+  z-index:9;cursor:pointer;transition:opacity .8s ease}
+#start.gone{opacity:0;pointer-events:none}
+#start .t{color:#e9e6df;font:600 40px/1.5 "PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;letter-spacing:.42em;text-indent:.42em}
+#start .s{margin-top:22px;color:#6f6a63;font:400 18px/1.6 Consolas,"Courier New",monospace;letter-spacing:.2em;text-align:center}
+
+.riso{position:absolute;inset:0;background:#f3ead9}
+.riso:before{content:"";position:absolute;inset:0;opacity:.16;background-image:
+  radial-gradient(#1b2340 1px, transparent 1.6px);background-size:14px 14px}
+.riso:after{content:"";position:absolute;inset:0;opacity:.12;background-image:
+  radial-gradient(#ff3d7f 1px, transparent 1.6px);background-size:14px 14px;background-position:7px 7px}
+.kick{position:absolute;left:96px;top:82px;font:700 20px/1 Consolas,monospace;letter-spacing:.42em;color:#ff3d7f}
+.h1{position:absolute;left:92px;top:120px;font:800 74px/1.1 "PingFang SC","Microsoft YaHei",sans-serif;color:#1b2340}
+.h1 em{font-style:normal;color:#ff3d7f}
+.steps{position:absolute;left:92px;right:92px;top:320px;display:flex;gap:34px}
+.step{flex:1;position:relative;padding:30px 28px;background:#fbf5e8;border:3px solid #1b2340;
+  box-shadow:12px 12px 0 rgba(255,61,127,.9)}
+.step .no{font:900 72px/1 Impact,"Arial Black",sans-serif;color:#ff3d7f;letter-spacing:-.02em}
+.step h3{margin:10px 0 12px;font:800 31px/1.3 "PingFang SC",sans-serif;color:#1b2340}
+.step p{font:400 19px/1.8 "PingFang SC",sans-serif;color:#3a3f57}
+.step .tag{position:absolute;right:22px;top:22px;font:700 15px/1 Consolas,monospace;color:#1b2340;opacity:.5}
+.band{position:absolute;left:0;right:0;bottom:0;height:150px;background:#1b2340}
+.band .t{position:absolute;left:96px;top:44px;font:700 30px/1.4 "PingFang SC",sans-serif;color:#f3ead9}
+.band .t em{font-style:normal;color:#ff3d7f}
+.band .r{position:absolute;right:96px;top:52px;font:500 16px/1 Consolas,monospace;color:#8e94ad;letter-spacing:.16em}
+
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+
+<div class="riso">
+  <div class="kick fx" id="e1">TWO STATEMENTS · HOW TO READ</div>
+  <div class="h1 fx d1" id="e2">两张报表<br><em>合起来</em>怎么读</div>
+  <div class="steps">
+    <div class="step fx d2" id="e3"><div class="tag">01</div><div class="no">01</div>
+      <h3>先看结构</h3><p>资产 = 负债 + 权益。谁的负债是「借来的」、谁是「预收来的」，决定风险的性质。</p></div>
+    <div class="step fx d2" id="e4"><div class="tag">02</div><div class="no">02</div>
+      <h3>再看利润</h3><p>营业收入 − 营业成本 − 期间费用 = 营业利润。毛利率守住了，利润率未必守得住。</p></div>
+    <div class="step fx d3" id="e5"><div class="tag">03</div><div class="no">03</div>
+      <h3>最后对齐口径</h3><p>同一笔货款，发货算收入还是到终端算收入，会把 303 亿元在两年之间搬来搬去。</p></div>
+  </div>
+  <div class="band fx d3" id="e6">
+    <div class="t">合起来看，才是<em>同一门生意</em>的两本账。</div>
+    <div class="r">2024 / 2025 ANNUAL REPORTS</div>
+  </div>
+</div>
+
+<div id="hud"><div id="bar"></div></div>
+<div id="hint">SPACE 暂停 · 点右下角重播</div>
+<div id="start"><div><div class="t">点 击 开 始 播 放</div>
+<div class="s">Risograph 双色套印 · 三步读法</div></div></div>
+</div></div>
+<script>
+var DUR = 16000, CUES = [{"t": 200, "sel": "#e1", "act": "on"}, {"t": 500, "sel": "#e2", "act": "on"}, {"t": 1200, "sel": "#e3", "act": "on"}, {"t": 1650, "sel": "#e4", "act": "on"}, {"t": 2100, "sel": "#e5", "act": "on"}, {"t": 2900, "sel": "#e6", "act": "on"}];
+var stage = document.getElementById('stage'), bar = document.getElementById('bar');
+var startEl = document.getElementById('start'), hintEl = document.getElementById('hint');
+var playing = false, t0 = 0, elapsed = 0, paused = false, done = {}, timer = null;
+function fit(){
+  var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+}
+window.addEventListener('resize', fit); fit();
+function run(c){
+  var el = document.querySelector(c.sel);
+  if(!el) return;
+  if(c.act === 'on'){ el.classList.add('on');
+    var hv = el.style.getPropertyValue('--h'); if(hv){ el.style.height = hv; } }
+  else if(c.act === 'w'){ el.style.width = c.arg + '%'; el.style.transition = 'width 1.05s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'h'){ el.style.height = c.arg + '%'; el.style.transition = 'height 1.15s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'cls'){ el.classList.add(c.arg); }
+  else if(c.act === 'count'){
+    var to = c.arg, dec = c.dec || 0, dur = 900, s0 = Date.now();
+    var id = setInterval(function(){
+      var k = Math.min(1, (Date.now() - s0) / dur);
+      var v = to * (1 - Math.pow(1 - k, 3));
+      el.textContent = v.toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+      if(k >= 1) clearInterval(id);
+    }, 33);
+  }
+}
+function tick(){
+  if(!playing){ if(timer){ clearInterval(timer); timer = null; } return; }
+  var now = Date.now();
+  if(!paused){
+    if(!t0) t0 = now;
+    elapsed += now - t0; t0 = now;
+    for(var i = 0; i < CUES.length; i++){
+      var c = CUES[i];
+      if(!done[i] && elapsed >= c.t){ done[i] = 1; run(c); }
+    }
+    bar.style.width = Math.min(100, elapsed / DUR * 100) + '%';
+    if(elapsed >= DUR){
+      playing = false; hintEl.classList.add('on'); hintEl.textContent = '重 播';
+      hintEl.style.pointerEvents = 'auto'; hintEl.style.cursor = 'pointer';
+      if(timer){ clearInterval(timer); timer = null; }
+      return;
+    }
+  } else { t0 = now; }
+}
+function play(){
+  startEl.classList.add('gone');
+  playing = true; elapsed = 0; t0 = 0; done = {}; paused = false;
+  bar.style.width = '0%'; hintEl.classList.remove('on');
+  document.querySelectorAll('.fx').forEach(function(e){ e.classList.remove('on'); });
+  if(timer) clearInterval(timer);
+  timer = setInterval(tick, 16);
+}
+startEl.addEventListener('click', play);
+if(true){ setTimeout(play, 60); }
+hintEl.addEventListener('click', function(){ if(hintEl.textContent.indexOf('重') >= 0) play(); });
+window.addEventListener('keydown', function(e){
+  if(e.code === 'Space'){ e.preventDefault();
+    if(!playing){ play(); return; }
+    paused = !paused;
+    document.querySelectorAll('.fx').forEach(function(el){
+      el.style.transitionDuration = paused ? '0s' : '';
+    });
+  }
+});
+</script>
+</body>
+</html>

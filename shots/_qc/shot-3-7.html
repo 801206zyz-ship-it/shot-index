@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>五粮液 2026：303 亿元被涂改掉</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#07070a;overflow:hidden}
+#wrap{position:fixed;inset:0;overflow:hidden}
+#stage{width:1920px;height:1080px;position:absolute;left:50%;top:50%;overflow:hidden;
+  transform:translate(-50%,-50%) scale(1);transform-origin:center center;
+  background:#f4f1e8;color:#1d2a24;
+  font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+.fx{opacity:0;transform:translateY(26px);transition:opacity .72s ease,transform .82s cubic-bezier(.2,.75,.2,1)}
+.fx.on{opacity:1;transform:none}
+.fx.d1{transition-delay:.06s}.fx.d2{transition-delay:.12s}.fx.d3{transition-delay:.18s}
+#hud{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.10);z-index:6}
+#bar{height:100%;width:0;background:#0f5132}
+#hint{position:absolute;right:26px;bottom:22px;font:500 15px/1 Consolas,"Courier New",monospace;letter-spacing:.18em;
+  color:#7d8a80;opacity:0;transition:opacity .6s ease;z-index:6}
+#hint.on{opacity:.85}
+#start{position:absolute;inset:0;background:#050507;display:grid;place-items:center;
+  z-index:9;cursor:pointer;transition:opacity .8s ease}
+#start.gone{opacity:0;pointer-events:none}
+#start .t{color:#e9e6df;font:600 40px/1.5 "PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;letter-spacing:.42em;text-indent:.42em}
+#start .s{margin-top:22px;color:#6f6a63;font:400 18px/1.6 Consolas,"Courier New",monospace;letter-spacing:.2em;text-align:center}
+
+.chain{position:absolute;inset:0;background:linear-gradient(180deg,#f7f4ec 0%,#f4f1e8 60%,#eeeade 100%)}
+.kick{position:absolute;left:96px;top:80px;font:700 19px/1 Consolas,monospace;letter-spacing:.4em;color:#0f5132}
+.h1{position:absolute;left:94px;top:116px;font:700 70px/1.18 "__FONT__"}
+.h1 em{font-style:normal;color:#b91c1c}
+.line{position:absolute;left:150px;top:300px;bottom:250px;width:3px;background:rgba(15,81,50,.25)}
+.ev{position:absolute;left:150px;right:96px;padding-left:70px}
+.ev .d{position:absolute;left:-9px;top:8px;width:21px;height:21px;border-radius:50%;
+  background:#f4f1e8;border:3px solid #0f5132}
+.ev .dt{font:700 17px/1 Consolas,monospace;color:#0f5132;letter-spacing:.08em;margin-bottom:8px}
+.ev .tt{font:700 30px/1.35 "__FONT__";margin-bottom:6px}
+.ev .tx{font:400 19px/1.6 "__FONT__";color:#4b5a52;max-width:1180px}
+.ev.hot .d{border-color:#b91c1c;background:#b91c1c}
+.ev.hot .dt{color:#b91c1c}
+.ev.hot .tt{color:#b91c1c}
+.foot{position:absolute;right:96px;bottom:56px;font:400 15px/1 Consolas,monospace;color:#8a968c;letter-spacing:.08em}
+
+</style>
+</head>
+<body>
+<div id="wrap"><div id="stage">
+
+<div class="chain">
+  <div class="kick fx" id="f1">TIMELINE · 2025-02 → 2026-05</div>
+  <div class="h1 fx d1" id="f2">一条链，<em>303 亿元</em>凭空消失</div>
+  <div class="line"></div>
+  <div class="ev fx" id="f3" style="top:298px">
+    <div class="d"></div><div class="dt">2025-02-12</div>
+    <div class="tt">两家「平台公司」同日成立</div>
+    <div class="tx">四川五钧、四川五浚各 5 亿元级，39 家一级经销商持股，法人是刚离任的大区高管。</div></div>
+  <div class="ev fx" id="f4" style="top:464px">
+    <div class="d"></div><div class="dt">2025-08 中报</div>
+    <div class="tt">前五大客户占比 21.12% → 56.96%</div>
+    <div class="tx">同一批经销商被装进「平台」，收入提前确认，市场称其为业绩放大器。</div></div>
+  <div class="ev hot fx" id="f5" style="top:630px">
+    <div class="d"></div><div class="dt">2026-04-30 深夜</div>
+    <div class="tt">《前期会计差错更正》：收入确认改为「终端售出」</div>
+    <div class="tx">前三季度营收 609.45 → 306.38 亿元，一次性抹掉 303.08 亿元；新增「监管商品款」等科目 312.22 亿元。</div></div>
+  <div class="ev hot fx" id="f6" style="top:796px">
+    <div class="d"></div><div class="dt">2026-05-06</div>
+    <div class="tt">复牌低开 6.49%，20 天跌到 85.47 元</div>
+    <div class="tx">当晚抛出 30–50 亿元增持；投资者把这次调整称作「涂改液」，年报「会计政策变更」一栏却写着「不适用」。</div></div>
+  <div class="foot">数据：公司公告、东方财富、证券之星（2026-05）</div>
+</div>
+
+<div id="hud"><div id="bar"></div></div>
+<div id="hint">SPACE 暂停 · 点右下角重播</div>
+<div id="start"><div><div class="t">点 击 开 始 播 放</div>
+<div class="s">3-7 · 纵向事件链 · 22,144</div></div></div>
+</div></div>
+<script>
+var DUR = 20000, CUES = [{"t": 200, "sel": "#f1", "act": "on"}, {"t": 500, "sel": "#f2", "act": "on"}, {"t": 1100, "sel": "#f3", "act": "on"}, {"t": 2100, "sel": "#f4", "act": "on"}, {"t": 3500, "sel": "#f5", "act": "on"}, {"t": 5600, "sel": "#f6", "act": "on"}];
+var stage = document.getElementById('stage'), bar = document.getElementById('bar');
+var startEl = document.getElementById('start'), hintEl = document.getElementById('hint');
+var playing = false, t0 = 0, elapsed = 0, paused = false, done = {}, timer = null;
+function fit(){
+  var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+  stage.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+}
+window.addEventListener('resize', fit); fit();
+function run(c){
+  var el = document.querySelector(c.sel);
+  if(!el) return;
+  if(c.act === 'on'){ el.classList.add('on');
+    var hv = el.style.getPropertyValue('--h'); if(hv){ el.style.height = hv; } }
+  else if(c.act === 'w'){ el.style.width = c.arg + '%'; el.style.transition = 'width 1.05s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'h'){ el.style.height = c.arg + '%'; el.style.transition = 'height 1.15s cubic-bezier(.2,.8,.2,1)'; }
+  else if(c.act === 'cls'){ el.classList.add(c.arg); }
+  else if(c.act === 'count'){
+    var to = c.arg, dec = c.dec || 0, dur = 900, s0 = Date.now();
+    var id = setInterval(function(){
+      var k = Math.min(1, (Date.now() - s0) / dur);
+      var v = to * (1 - Math.pow(1 - k, 3));
+      el.textContent = v.toLocaleString('en-US', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+      if(k >= 1) clearInterval(id);
+    }, 33);
+  }
+}
+function tick(){
+  if(!playing){ if(timer){ clearInterval(timer); timer = null; } return; }
+  var now = Date.now();
+  if(!paused){
+    if(!t0) t0 = now;
+    elapsed += now - t0; t0 = now;
+    for(var i = 0; i < CUES.length; i++){
+      var c = CUES[i];
+      if(!done[i] && elapsed >= c.t){ done[i] = 1; run(c); }
+    }
+    bar.style.width = Math.min(100, elapsed / DUR * 100) + '%';
+    if(elapsed >= DUR){
+      playing = false; hintEl.classList.add('on'); hintEl.textContent = '重 播';
+      hintEl.style.pointerEvents = 'auto'; hintEl.style.cursor = 'pointer';
+      if(timer){ clearInterval(timer); timer = null; }
+      return;
+    }
+  } else { t0 = now; }
+}
+function play(){
+  startEl.classList.add('gone');
+  playing = true; elapsed = 0; t0 = 0; done = {}; paused = false;
+  bar.style.width = '0%'; hintEl.classList.remove('on');
+  document.querySelectorAll('.fx').forEach(function(e){ e.classList.remove('on'); });
+  if(timer) clearInterval(timer);
+  timer = setInterval(tick, 16);
+}
+startEl.addEventListener('click', play);
+if(true){ setTimeout(play, 60); }
+hintEl.addEventListener('click', function(){ if(hintEl.textContent.indexOf('重') >= 0) play(); });
+window.addEventListener('keydown', function(e){
+  if(e.code === 'Space'){ e.preventDefault();
+    if(!playing){ play(); return; }
+    paused = !paused;
+    document.querySelectorAll('.fx').forEach(function(el){
+      el.style.transitionDuration = paused ? '0s' : '';
+    });
+  }
+});
+</script>
+</body>
+</html>
